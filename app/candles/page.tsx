@@ -5,14 +5,10 @@ import { useCart } from "@/context/CartContext";
 import { products } from "@/lib/products";
 
 export default function CandlesPage() {
-  const { items } = useCart(); 
+  const { items } = useCart();
 
   return (
     <section className="relative overflow-hidden bg-white py-10 lg:py-10 md:py-10 sm:py-10">
-      {/* Decorative blur elements */}
-      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-green/10 blur-3xl -z-10"></div>
-      <div className="absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-green-600/10 blur-3xl -z-10"></div>
-
       <div className="mx-auto max-w-container px-4 relative z-10">
         {/* Header Section */}
         <div className="mb-12 text-center">

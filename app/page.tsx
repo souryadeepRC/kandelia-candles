@@ -146,7 +146,7 @@ const FeaturedSection = () => {
                       className="to-green bg-clip-text 
                     text-4xl font-black text-green lg:text-4xl md:text-5xl sm:text-xl"
                     >
-                      {formatINR(product.basePrice)}
+                      {formatINR(product.basePrice)} <span className="text-sm"> / Candle</span>
                     </div>
                   </div>
                   <Link
@@ -204,12 +204,22 @@ export default function Home() {
             Why Choose Kandelia?
           </h2>
 
-          <div className="grid gap-6 lg:gap-4 md:gap-3 sm:gap-3 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] my-10 mx-10">
+          <div className="grid gap-6 lg:gap-4 md:gap-3 sm:gap-3 grid-cols-[repeat(auto-fit,minmax(350px,1fr))] my-10 mx-10">
+             <ShippingCard
+              icon="✨"
+              title="Premium Quality"
+              description="Long-lasting Burn Time. 100% cotton wick. Made with soy wax. Smooth flame"
+            />
+             <ShippingCard
+              icon="🔥"
+              title="Clean & Safe"
+              description="Smokeless flame. Dripless burn. Consistent, steady performance"
+            />
             <ShippingCard
               icon="✈️"
               title="Fast Shipping"
               description="Delivery across India within 3-5 business days. Free shipping on
-                orders above ₹200"
+                orders above ₹2000"
             />
 
             <ShippingCard

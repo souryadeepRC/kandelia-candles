@@ -7,6 +7,7 @@ export interface Fragrance {
 export interface PricingTier {
   minQty: number;
   label: string;
+  description?: string;
   pricePerUnit: number;
 }
 
@@ -15,6 +16,7 @@ export interface Product {
   name: string;
   description?: string;
   basePrice: number;
+  burnTime?: string;
   fragrances: Fragrance[];
   tiers: PricingTier[];
   image?: string;
@@ -27,6 +29,7 @@ export interface CartItem {
   productId: string;
   name: string;
   fragranceId: string;
+  fragranceName: string;
   pricePerUnit: number;
   qty: number;
 }

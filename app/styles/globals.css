@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .text-primary-color {
+    @apply text-green-900;
+  }
+  .text-secondary-color {
+    @apply text-green-700;
+  }
+  .heading-text{
+    @apply text-primary-color text-2xl md:text-4xl font-bold mb-3 text-center
+  }
+  .sub-heading-text{
+    @apply text-gray-600 text-sm md:text-lg w-[70%] md:w-[50%] mx-auto  text-center
+  }
+
+}
+
 /* Remove number input spinners */
 input[type="number"] {
   -moz-appearance: textfield;

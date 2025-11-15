@@ -23,19 +23,21 @@ export default function ProductCard({
       {/* Card */}
       <div className="relative h-full p-5 overflow-hidden rounded-2xl border border-green-200 bg-white/80 backdrop-blur-2xl transition-all duration-500 hover:border-green-600/40 hover:shadow-2xl flex flex-col">
         {/* Image Container */}
-        <div className="relative overflow-hidden">
-          {product.image ? (
-            <img
-              className="aspect-square h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-              src={product.image}
-              alt={product.name}
-            />
-          ) : (
-            <div className="aspect-square flex items-center justify-center bg-gradient-to-b from-green-900 to-green-600 text-4xl font-bold text-white">
-              {initials}
-            </div>
-          )}
-        </div>
+        <Link href={`/candles/${product.id}`}>
+          <div className="relative overflow-hidden">
+            {product.image ? (
+              <img
+                className="aspect-square h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                src={product.image}
+                alt={product.name}
+              />
+            ) : (
+              <div className="aspect-square flex items-center justify-center bg-gradient-to-b from-green-900 to-green-600 text-4xl font-bold text-white">
+                {initials}
+              </div>
+            )}
+          </div>
+        </Link>
 
         {/* Content */}
         <div className="relative flex flex-col gap-3 p-5 sm:p-4 flex-grow">
@@ -65,7 +67,7 @@ export default function ProductCard({
           <div>
             <span className="text-xs">Starting from</span>
             <div className="bg-gradient-to-r from-green-900 to-green-600 bg-clip-text text-2xl font-black text-transparent md:text-3xl sm:text-xl">
-              {formatINR(product.basePrice)}
+              {formatINR(product.basePrice)} <span className="text-sm"> / Candle</span>
             </div>
           </div>
 

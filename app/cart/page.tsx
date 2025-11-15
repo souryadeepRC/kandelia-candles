@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { formatINR } from "@/lib/currency";
-import { products } from "@/lib/products";
 import { toast } from "sonner";
-import OrderProcessSteps from "@/components/OrderProcessSteps";
 
 export default function CartPage() {
   const { items, remove, total } = useCart();
@@ -94,36 +92,39 @@ export default function CartPage() {
   return (
     <div className="relative overflow-hidden bg-white py-12 lg:py-10 md:py-8 sm:py-6">
       <div className="mx-auto max-w-container px-4 relative z-10">
-        {/* Cart Layout */}
-        <div className="grid gap-8 lg:gap-6 grid-cols-1 md:grid-cols-3">
-          {/* Cart Items */}
+        <div className="grid gap-8 lg:gap-2 grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <div className="space-y-4">
+            <div className="space-y-4 lg:max-w-[60vw]">
               {items.map((item) => (
                 <div
                   key={`${item.productId}:${item.fragranceId}`}
-                  className="group relative rounded-2xl border border-green-400 bg-white/80 backdrop-blur-2xl p-6 transition-all duration-500 hover:border-green-600/40 hover:shadow-lg"
+                  className="mt-4 group relative rounded-2xl border border-green-400 bg-white/80 backdrop-blur-2xl p-6 transition-all duration-500 hover:border-green-600/40 hover:shadow-lg"
                 >
                   {/* Hover glow */}
-                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-green-600/20 to-green/10 opacity-0 blur-lg group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                  <div
+                    className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-green-600/20 to-green/10 opacity-0 
+                    blur-lg group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                  ></div>
 
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     {/* Product Info */}
                     <div className="flex-grow">
-                      <h3 className="text-xl font-bold text-text-primary mb-2 md:text-lg sm:text-base">
-                        {item.name}
+                      <h3 className="text-lg font-bold text-primary-color mb-1 md:text-lg sm:text-base">
+                        {item.name} - {item.fragranceName}
                       </h3>
-                      <p className="text-sm font-semibold mb-3">
-                        Quantity: {item.qty}
-                      </p>
-                      <p className="text-text-primary/60 text-sm">
-                        {formatINR(item.pricePerUnit)} per unit
-                      </p>
+                      <p className="text-sm mb-4">Quantity: {item.qty}</p>
+                      <Link
+                        href={`/candles/${item.productId}?Fragrance=${item.fragranceId}`}
+                        className="text-white bg-green-700 p-2 px-4 rounded-xl"
+                      >
+                        Add More
+                      </Link>
                     </div>
 
                     {/* Quantity Control */}
-                    <div className="flex items-center gap-4 md:gap-3">
+                    <div className="flex items-center justify-between gap-4 md:gap-3 flex-wrap mt-5 md:mt-0">
                       {/* Price */}
+
                       <div className="text-right min-w-24">
                         <p className="text-2xl font-black bg-gradient-to-r from-green-900 to-green-600 bg-clip-text text-transparent md:text-xl sm:text-lg">
                           {formatINR(item.pricePerUnit * item.qty)}
@@ -133,7 +134,7 @@ export default function CartPage() {
                       {/* Remove Button */}
                       <button
                         onClick={() => remove(item.productId, item.fragranceId)}
-                        className="flex items-center justify-center h-10 w-10 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-300 ml-2"
+                        className="flex items-center gap-2 justify-center h-10 px-4 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-300 ml-2"
                         title="Remove item"
                       >
                         <svg
@@ -148,17 +149,16 @@ export default function CartPage() {
                             strokeWidth={2}
                             d="M6 18L18 6M6 6l12 12"
                           />
-                        </svg>
+                        </svg>{" "}
+                        Cancel
                       </button>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            <OrderProcessSteps />
           </div>
 
-          {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 rounded-2xl border border-white/20 bg-gradient-to-br from-white/80 to-green-600/5 backdrop-blur-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-text-primary mb-6 lg:text-xl md:text-lg sm:text-lg">
@@ -213,7 +213,6 @@ export default function CartPage() {
               </Link>
             </div>
           </div>
-          {/* Decorative blur elements */}
         </div>
       </div>
     </div>
